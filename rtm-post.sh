@@ -8,6 +8,9 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
+command -v jq >/dev/null 2>&1 || { echo >&2 "You need jq installed! http://stedolan.github.io/jq/"; exit 1; }
+
+
 # secrets
 if [ -z "${RTM_API_KEY-}" -o -z "${RTM_SHARED_SECRET-}" ]; then
   >&2 echo "You must set the RTM_API_KEY and RTM_SHARED_SECRET environment variables."
